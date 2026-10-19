@@ -36,7 +36,13 @@ def load_recording(path) -> list:
                 readings_bpm.append(float(hr_text))
     return readings_bpm
 
-# DO NOT FILL THIS IN YET
+# PROMPT (final version used):
+# Help implement this function `load_subject_readings(store_path, subject_id: str) -> list:`
+# The readings, unlike in `load_recordings`, will take data from the `data/ward4.zarr` folder (using zarr 3) with `store_path` being `data/ward4.zarr` and `subject_id` being the folder names S01 S02 ect
+# Inspect the zarr folder data structure and return it in the same format as in `load_recording` (so a list[float])
+# Raise a `ValueError` for subjects not in the `data/ward4.zarr` folder
+# Add docstrings mentioning each variable
+# Make no mistakes.
 def load_subject_readings(store_path, subject_id: str) -> list:
     pass
 
