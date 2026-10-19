@@ -36,6 +36,10 @@ def load_recording(path) -> list:
                 readings_bpm.append(float(hr_text))
     return readings_bpm
 
+# DO NOT FILL THIS IN YET
+def load_subject_readings(store_path, subject_id: str) -> list:
+    pass
+
 
 # PROMPT (final version used, week 3):
 # Write a Python function percent_above(readings, limit_bpm).

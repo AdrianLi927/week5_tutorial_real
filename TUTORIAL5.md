@@ -72,8 +72,8 @@ Then start Assignment 5.
 
 ## What I found in step 2
 
-- S01: device ..., units ..., one reading every ... s
-- S01 has ... readings; S02 has ... readings; I found it in ...
+- S01: device: wristband, units: bpm, one reading every 15 s
+- S01 has 10 readings; S02 has 15 readings; I found it in SXX/hr_bpm/zarr.json -> shape
 
 ## What failed in step 6 (if anything)
 
