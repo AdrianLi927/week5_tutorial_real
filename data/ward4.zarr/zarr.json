@@ -1,0 +1,8 @@
+{
+  "attributes": {
+    "study": "Ward 4 overnight pilot",
+    "note": "dropped samples are stored as 0; readings above 250 bpm are artefacts, kept as recorded"
+  },
+  "zarr_format": 3,
+  "node_type": "group"
+}
