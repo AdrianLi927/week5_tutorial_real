@@ -1,5 +1,9 @@
 """Steps for heart-rate recordings. Definitions only: importing this file prints nothing."""
 
+from typing import cast
+
+import zarr
+
 
 # PROMPT (final version used):
 # Write a Python function load_recording(path) that reads a heart-rate file
@@ -42,9 +46,26 @@ def load_recording(path) -> list:
 # Inspect the zarr folder data structure and return it in the same format as in `load_recording` (so a list[float])
 # Raise a `ValueError` for subjects not in the `data/ward4.zarr` folder
 # Add docstrings mentioning each variable
+# Dont run any tests yet when implementing, that will come later
 # Make no mistakes.
 def load_subject_readings(store_path, subject_id: str) -> list:
-    pass
+    """Load a subject's heart rates in bpm from a Zarr 3 study.
+
+    Args:
+        store_path: Path to the read-only Zarr study store.
+        subject_id: Subject group name, such as ``S01``.
+
+    Returns:
+        A list of the subject's heart-rate readings as floats in bpm.
+
+    Raises:
+        ValueError: If subject_id is not present in the study.
+    """
+    study = zarr.open_group(store=store_path, mode="r")
+    if subject_id not in study:
+        raise ValueError(f"subject not found: {subject_id}")
+    readings_bpm = cast(list[float], study[f"{subject_id}/hr_bpm"][:])
+    return [float(reading) for reading in readings_bpm]
 
 
 # PROMPT (final version used, week 3):

@@ -46,3 +46,17 @@ def test_empty_recording_is_refused():
     """No valid readings -> ValueError, as the prompt says."""
     with pytest.raises(ValueError):
         vitals.percent_above([0, 0, 0], limit_bpm=100)
+ 
+ # written myself manually       
+def test_zarr_readings_same():
+    """Tests if readings that came from the csv and the zarr readers are equal (patient id S01)"""
+    csv_readings = vitals.load_recording("data/recording.csv")
+    zarr_readings = vitals.load_subject_readings("data/ward4.zarr", "S01")
+    assert csv_readings == zarr_readings
+    
+ # written myself manually
+def test_zarr_readings_length():
+    """Tests if the length of readings from S02 is as expected"""
+    EXPECTED = 15
+    zarr_readings = vitals.load_subject_readings("data/ward4.zarr", "S02")
+    assert len(zarr_readings) == EXPECTED
